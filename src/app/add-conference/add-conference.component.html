@@ -1,0 +1,23 @@
+<h1>Add New Conference</h1>
+
+<form [formGroup]="conferenceForm">
+  <label for="name">Conference name<sup>*</sup>:</label>
+  <input id="name" formControlName="name">
+
+  <label for="img">Logo:</label>
+  <div class="logo-container">
+    <img *ngIf="logoDataSrc.length" [src]="logoDataSrc">
+    <input #logo type="file" accept="image/*" (change)="uploadLogo(logo)">
+  </div>
+
+  <label for="startDate">Start date<sup>*</sup>:</label>
+  <input type="datetime-local" formControlName="startDateTime">
+
+  <label for="endDate">End date<sup>*</sup>:</label>
+  <input type="datetime-local" formControlName="endDateTime">
+
+  <label for="desc">Description<sup>*</sup>:</label>
+  <textarea id="desc" formControlName="desc"></textarea>
+
+  <button [disabled]="!conferenceForm.valid" (click)="save()">Save</button>
+</form>

@@ -1,0 +1,29 @@
+<div class="card-container">
+  <header>
+    <img *ngIf="conf.logo" [src]="conf.logo.src" [title]="conf.logo.title" />
+    <h1>{{ conf.title }}</h1>
+    <time>
+      {{ conf.startDateTime | date: 'short' }} - 
+      {{ conf.endDateTime | date: 'short' }}
+    </time>
+  </header>
+  <article>
+    <div>{{ conf.description }}</div>
+
+    <div *ngFor="let day of [].constructor(days); let i = index">
+      <h1>Day {{ i + 1 }}</h1>
+
+      <section *ngFor="let talk of conf.talks">
+        <div *ngIf="talk.day === i + 1">
+          <h1>{{ talk.title }}</h1>
+          <time>{{ talk.duration }}</time>
+          <div class="speaker">
+            <h2>{{ talk.speaker.name }}</h2>
+            <img *ngIf="talk.speaker.avatar">
+          </div>
+          <p>{{ talk.description }}</p>
+        </div>
+      </section>
+    </div>
+  </article>
+</div>

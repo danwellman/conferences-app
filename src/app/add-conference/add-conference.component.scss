@@ -1,0 +1,37 @@
+label, input, textarea {
+  width: 100%;
+}
+
+input, textarea {
+  box-sizing: border-box;
+  margin: 0.5rem 0 1rem;
+  padding: 0.25rem 0.75rem;
+
+  &[type="file"]{
+    padding-left: 0;
+  }
+
+  &.ng-touched.ng-invalid {
+    border: 1px solid red;
+  }
+}
+
+.logo-container {
+  display: flex;
+
+  img {
+    width: 4rem;
+    height: auto;
+    margin-right: 0.5rem;
+
+    & + [type="file"] {
+      top: 0.5rem;
+      position: relative;
+    }
+  }
+}
+
+button {
+  display: block;
+  margin-top: 1.5rem;
+}

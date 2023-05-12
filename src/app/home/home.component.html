@@ -1,0 +1,19 @@
+<div class="card-container" *ngIf="confs?.length; else noConfs">
+  <ul>
+    <li class="card" tabindex="0" *ngFor="let conf of confs">
+      <img *ngIf="conf.logo" [src]="conf.logo.src" [title]="conf.logo.title" />
+      <h1>{{ conf.title }}</h1>
+      <div class="desc">
+        <p>{{ conf.shortDescription }}</p>
+        <time>{{ conf.startDateTime }} - {{ conf.endDateTime }}</time>
+        <a routerLink="view-conference/{{ conf.id }}">View</a>
+      </div>
+    </li>
+  </ul>
+</div>
+<ng-template #noConfs>
+  <div>
+    <h1>You aren't attending any upcoming conferences!</h1>
+  </div>
+</ng-template>
+<button (click)="addConference()">Add conference</button>
